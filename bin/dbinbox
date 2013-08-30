@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+# Christian Genco (@cgenco)
+
+require 'optparse'
+require 'dbinbox'
+
+# username is always the first argument
+dbinbox = Dbinbox.new(ARGV.shift)
+
+# all subsequent arguments will be messages or filenames
+dbinbox.send ARGV
+
+
+# binding.pry
+
+# RestClient.post(, "files[]" => File.new("./christian.png"))
+# RestClient.post("http://dbinbox.com/send/#{username}", "files[]" => ARGF.read)
+
+# filename=title&message=message
+
+
+# apt-get install dbinbox
+# gem install dbinbox
+# sudo npm install -g dbinbox
+
+# dbinbox cgenco FILENAME[S]
+# # uploads list of files to /send/cgenco in param files[]
+
+# dbinbox cgenco "Hello there!"
+# # sends the text "Hello there!" to /send/cgenco in param message
+
+# dbinbox cgenco/cats cat.jpg
+# # sends cat.jpg to the cats directory of cgenco
+
+# dbinbox cgenco rofl/
+# # where rofl is a directory. Recursively sends the contents of rofl to cgenco with the same directory structure
+
+# alias send="dbinbox cgenco"
+# send FILENAME[S]
+# # same as above
