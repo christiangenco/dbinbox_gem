@@ -35,11 +35,12 @@ class Dbinbox
       if File.directory?(arg)
         # STDERR.puts "#{arg} is a directory"
         Dir.glob(File.join(arg, "*")).each{|f|
-          Dbinbox.send("#{username}/#{arg}", f)
+          Dbinbox.send("#{username}", f)
         }
       elsif File.exists?(arg)
-        STDERR.puts "Uploading #{arg} to #{url}"
-        RestClient.post(url, "files[]" => File.new(arg))
+        u = url + arg.sub(File.basename(arg), '')
+        STDERR.puts "Uploading #{arg} to #{u}"
+        RestClient.post(u, "files[]" => File.new(arg))
       else
         STDERR.puts "Sending \"#{arg}\" to #{url}"
         RestClient.post(url, "message" => arg)
