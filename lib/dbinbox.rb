@@ -2,6 +2,7 @@
 
 class Dbinbox
   # @author Christian Genco (@cgenco)
+  VERSION = "0.0.1"
 
   require 'rest_client'
 

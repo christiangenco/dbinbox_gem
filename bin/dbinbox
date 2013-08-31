@@ -4,11 +4,42 @@
 require 'optparse'
 require 'dbinbox'
 
+@options = {}
+parser   = OptionParser.new do |opt|
+  opt.banner = "" +
+    "dbinbox: send files, directories, and messages to dbinbox.com from the command line\n\n" +
+    "For more information, see the README at:\n"+
+    "github.com/christiangenco/dbinbox_gem\n\n" +
+    "Usage:\n" +
+    "  $ dbinbox USERNAME cat.jpg\n" +
+    "  $ dbinbox USERNAME cats/ # uploads the directory cats and all of its contents\n" +
+    "  $ dbinbox USERNAME/lolcats bobtail.png bengal.jpg manx.gif \n" + 
+    "  # uploads three images to the /lolcats dbinbox directory" + 
+    "  $ dbinbox USERNAME \"hey there - how's it going?\"\n"
+
+  opt.summary_indent = ' '
+  opt.separator "\nOptions:\n"
+
+  opt.on('-h', '--help', 'Shows this help message') do
+    puts parser
+    exit
+  end
+
+  opt.on('-v', '--version', 'Shows the current version') do
+    puts '0.0.1'
+    exit
+  end
+end
+
+parser.parse!
+
+puts "exiting"
+exit
 # username is always the first argument
-dbinbox = Dbinbox.new(ARGV.shift)
+@dbinbox = Dbinbox.new(ARGV.shift)
 
 # all subsequent arguments will be messages or filenames
-dbinbox.send ARGV
+@dbinbox.send ARGV
 
 
 # binding.pry
