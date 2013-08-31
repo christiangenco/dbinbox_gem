@@ -11,10 +11,11 @@ parser   = OptionParser.new do |opt|
     "For more information, see the README at:\n"+
     "github.com/christiangenco/dbinbox_gem\n\n" +
     "Usage:\n" +
-    "  $ dbinbox USERNAME cat.jpg\n" +
-    "  $ dbinbox USERNAME cats/ # uploads the directory cats and all of its contents\n" +
+    "  $ dbinbox USERNAME cat.jpg\n\n" +
+    "  $ dbinbox USERNAME cats/\n" +
+    "  # uploads the directory cats and all of its contents\n\n"
     "  $ dbinbox USERNAME/lolcats bobtail.png bengal.jpg manx.gif \n" + 
-    "  # uploads three images to the /lolcats dbinbox directory" + 
+    "  # uploads three images to the /lolcats dbinbox directory\n\n" + 
     "  $ dbinbox USERNAME \"hey there - how's it going?\"\n"
 
   opt.summary_indent = ' '
