@@ -34,8 +34,12 @@ end
 
 parser.parse!
 
-puts "exiting"
-exit
+unless ARGV.length >= 2
+  STDERR.puts "Error: at least two arguments are required"
+  STDERR.puts parser
+  exit 1
+end
+
 # username is always the first argument
 @dbinbox = Dbinbox.new(ARGV.shift)
 
