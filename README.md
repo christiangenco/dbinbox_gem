@@ -1,10 +1,12 @@
 # Dbinbox
 
-TODO: Write a gem description
+Command line interface for the file sending site dbinbox.com. Allows command line uploading of files, directories, and messages from ARGV to specified dbinbox users.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+    $ gem install dbinbox
+
+Or, to use within a Ruby project, add this line to your application's Gemfile:
 
     gem 'dbinbox'
 
@@ -12,13 +14,18 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install dbinbox
-
 ## Usage
 
-TODO: Write usage instructions here
+    $ dbinbox USERNAME cat.jpg
+    # uploads cat.jpg to http://dbinbox.com/USERNAME/
+
+    $ dbinbox USERNAME cats/
+    # uploads the directory cats and all of its contents
+
+    $ dbinbox USERNAME/lolcats bobtail.png bengal.jpg manx.gif
+    # uploads three images to the /lolcats dbinbox directory
+    
+    $ dbinbox USERNAME "hey there - how's it going?"
 
 ## Contributing
 
