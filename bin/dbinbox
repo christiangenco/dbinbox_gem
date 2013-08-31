@@ -2,7 +2,6 @@
 # Christian Genco (@cgenco)
 
 require 'optparse'
-require 'dbinbox'
 
 @options = {}
 parser   = OptionParser.new do |opt|
@@ -27,7 +26,9 @@ parser   = OptionParser.new do |opt|
   end
 
   opt.on('-v', '--version', 'Shows the current version') do
-    puts '0.0.1'
+    require 'dbinbox/version'
+    puts Dbinbox::VERSION
+
     exit
   end
 end
@@ -35,10 +36,12 @@ end
 parser.parse!
 
 unless ARGV.length >= 2
-  STDERR.puts "Error: at least two arguments are required"
+  STDERR.puts "Error: at least two arguments are required\n"
   STDERR.puts parser
   exit 1
 end
+
+require 'dbinbox'
 
 # username is always the first argument
 @dbinbox = Dbinbox.new(ARGV.shift)
